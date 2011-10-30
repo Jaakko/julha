@@ -18,7 +18,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -30,7 +29,6 @@ public class CustomBroadcastReceiver extends BroadcastReceiver {
 	String org = "";
 	String name = "";
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
@@ -67,8 +65,10 @@ public class CustomBroadcastReceiver extends BroadcastReceiver {
                 int ldapVersion  = LDAPConnection.LDAP_V3;
                 String searchBase = "dc=julkishallinto, c=fi";
 
-                //String searchFilter = "(mobileTelephoneNumber=*+358 40 536 8056*)";
-                String searchFilter = "(mobileTelephoneNumber=*" + phonenumber + "*)";
+                //Testinumero
+                //phonenumber = "+358 40 536 8056";
+                String searchFilter = "(|(mobileTelephoneNumber=*" + phonenumber + "*)" +
+                						"(telephoneNumber=*" + phonenumber + "*))";
 
                 LDAPConnection lc = new LDAPConnection();
 
@@ -97,7 +97,6 @@ public class CustomBroadcastReceiver extends BroadcastReceiver {
                      *   -- The third while loop goes through all the attribute values
                      */
                     Log.i(TAG,searchResults.toString());
-                    //Log.i("IncomingCallReceiver",searchResults.);
                     while ( searchResults.hasMore()) {
                     	LDAPEntry nextEntry = null;
                         try {
@@ -152,13 +151,13 @@ public class CustomBroadcastReceiver extends BroadcastReceiver {
                         }
                     }
                    // disconnect with the server
-                   Log.i("IncomingCallReceiver","disconnecting");
-                   Log.i("IncomingCallReceiver",name + " soittaa, " + org);
+                   Log.i(TAG,"disconnecting");
+                   Log.i(TAG,name + " soittaa, " + org);
                    if (name.equals(""))Toast.makeText(context,"Tuntematon numero", Toast.LENGTH_LONG).show();
                    else Toast.makeText(context,name + " soittaa\n" + org, Toast.LENGTH_LONG).show();
                    lc.disconnect();
                 }catch(Exception e){
-                    Log.i("IncomingCallReceiver","exseption: " + e.getMessage());
+                    Log.i(TAG,"exseption: " + e.getMessage());
                     e.printStackTrace();  
                 }
         	}
