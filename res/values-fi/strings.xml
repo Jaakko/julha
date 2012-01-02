@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Puhelutiedot</string>
+    <string name="text_no_callitems">Ei puhelutietoja vielä!</string>
+    <string name="toast_no_callinfo">Tuntematon soittaja</string>
+    <string name="toast_callinfo"> soittaa.</string>
+    <string name="dialog_spam_text">Haluatko raportoida puhelinmyyjästä?</string>
+    <string name="dialog_yes">Kyllä</string>
+    <string name="dialog_no">Ei</string>
+</resources>

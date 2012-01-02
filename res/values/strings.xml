@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, JulhaActivity!</string>
-    <string name="app_name">Julha</string>
+    <string name="app_name">Puhelutiedot</string>
+    <string name="text_no_callitems">No caller information available yet!</string>
+    <string name="toast_no_callinfo">Unknown caller</string>
+    <string name="toast_callinfo"> is calling.</string>
+    <string name="dialog_spam_text">Want to report this caller as spammer?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
 </resources>

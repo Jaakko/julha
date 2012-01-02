@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Messages IDs -->
+  <item type="id" name="search_failed"/>
+  <item type="id" name="search_succeeded"/>
+  <item type="id" name="post_failed"/>
+  <item type="id" name="post_succeeded"/>
+</resources>

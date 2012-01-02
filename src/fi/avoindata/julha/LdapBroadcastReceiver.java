@@ -23,12 +23,11 @@ import android.util.Log;
 import android.widget.Toast;
 import android.provider.ContactsContract.PhoneLookup;
 
-public class CustomBroadcastReceiver extends BroadcastReceiver {
+public class LdapBroadcastReceiver extends BroadcastReceiver {
 
-	private static final String TAG = "CustomBroadcastReceiver";
+	private static final String TAG = "LdapBroadcastReceiver";
 	String org = "";
 	String name = "";
-	
 	@Override
 	public void onReceive(Context context, Intent intent) {
         Bundle bundle = intent.getExtras();
@@ -155,6 +154,7 @@ public class CustomBroadcastReceiver extends BroadcastReceiver {
                    Log.i(TAG,name + " soittaa, " + org);
                    if (name.equals(""))Toast.makeText(context,"Tuntematon numero", Toast.LENGTH_LONG).show();
                    else Toast.makeText(context,name + " soittaa\n" + org, Toast.LENGTH_LONG).show();
+                   //Toast.makeText(context,"Tarja Halonen" + " soittaa\n" + "Presidentin kanslia", Toast.LENGTH_LONG).show();
                    lc.disconnect();
                 }catch(Exception e){
                     Log.i(TAG,"exseption: " + e.getMessage());
