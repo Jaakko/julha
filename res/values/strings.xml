@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Puhelutiedot</string>
+    <string name="app_label">Puhelutiedot</string>
+    <string name="searchactivity_title">Search contacts</string>
+    <string name="search_hint">Type name, number or organisation</string>
     <string name="text_no_callitems">No caller information available yet!</string>
     <string name="toast_no_callinfo">Unknown caller</string>
-    <string name="toast_callinfo"> is calling.</string>
-    <string name="dialog_spam_text">Want to report this caller as spammer?</string>
+    <string name="toast_callinfo">is calling.</string>
+    <string name="dialog_spam_text">Do you want to report this caller as spammer?</string>
+    <string name="dialog_call">Do you want to call to this number?</string>
+    <string name="dialog_store_contact_text">Do you want to store the number into contacts?</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
+    <string name="button_search">Search</string>
+    <string name="menu_store_contact">Store contact</string>
+    <string name="menu_share_contact">Share contact</string>
+    <string name="menu_delete_contact">Delete contact</string>
+	<string name="menu_help">Help</string>
+	<string name="share_contact">Contact information</string>
 </resources>

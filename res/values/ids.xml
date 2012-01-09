@@ -5,4 +5,5 @@
   <item type="id" name="search_succeeded"/>
   <item type="id" name="post_failed"/>
   <item type="id" name="post_succeeded"/>
+  <item type="id" name="get_succeeded"/>
 </resources>

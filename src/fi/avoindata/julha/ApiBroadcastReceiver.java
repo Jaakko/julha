@@ -2,8 +2,6 @@ package fi.avoindata.julha;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
-import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.Locale;
 
 import org.apache.http.HttpEntity;
@@ -102,7 +100,7 @@ public class ApiBroadcastReceiver extends BroadcastReceiver {
 		      String sn = json.getString("sn");
 
 		      if (name.equals(""))Toast.makeText(context,R.string.toast_no_callinfo, Toast.LENGTH_LONG).show();
-              else Toast.makeText(context,name + context.getResources().getString(R.string.toast_callinfo) + "\n" + org, Toast.LENGTH_LONG).show();
+              else Toast.makeText(context, name + " " + context.getResources().getString(R.string.toast_callinfo) + "\n" + org, Toast.LENGTH_LONG).show();
 		      
         	  CallItem callItem = new CallItem();
         	  callItem.setFullname(name);
