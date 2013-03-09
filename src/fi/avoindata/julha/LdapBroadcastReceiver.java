@@ -2,7 +2,7 @@ package fi.avoindata.julha;
 
 import java.util.Enumeration;
 import java.util.Iterator;
-
+/*
 import com.novell.ldap.LDAPAttribute;
 import com.novell.ldap.LDAPAttributeSet;
 import com.novell.ldap.LDAPConnection;
@@ -11,6 +11,7 @@ import com.novell.ldap.LDAPEntry;
 import com.novell.ldap.LDAPException;
 import com.novell.ldap.LDAPSearchResults;
 import com.novell.ldap.util.Base64;
+*/
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -59,7 +60,7 @@ public class LdapBroadcastReceiver extends BroadcastReceiver {
                 } finally {
                 		cursor.close();
                 }
-                
+  /*              
                 int searchScope = LDAPConnection.SCOPE_SUB;
                 int ldapVersion  = LDAPConnection.LDAP_V3;
                 String searchBase = "dc=julkishallinto, c=fi";
@@ -90,11 +91,7 @@ public class LdapBroadcastReceiver extends BroadcastReceiver {
                                     false);       // return attrs and values
 
                     Log.i(TAG,"searching LDAP: " + searchFilter);
-                    /* To print out the search results,
-                     *   -- The first while loop goes through all the entries
-                     *   -- The second while loop goes through all the attributes
-                     *   -- The third while loop goes through all the attribute values
-                     */
+                    
                     Log.i(TAG,searchResults.toString());
                     while ( searchResults.hasMore()) {
                     	LDAPEntry nextEntry = null;
@@ -156,10 +153,12 @@ public class LdapBroadcastReceiver extends BroadcastReceiver {
                    else Toast.makeText(context,name + " soittaa\n" + org, Toast.LENGTH_LONG).show();
                    //Toast.makeText(context,"Tarja Halonen" + " soittaa\n" + "Presidentin kanslia", Toast.LENGTH_LONG).show();
                    lc.disconnect();
+                   
                 }catch(Exception e){
                     Log.i(TAG,"exseption: " + e.getMessage());
                     e.printStackTrace();  
                 }
+                */
         	}
         }
 	}

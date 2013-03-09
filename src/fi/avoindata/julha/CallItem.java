@@ -8,7 +8,13 @@ public class CallItem {
 	public static final String NUMBER = "number";
 	public static final String GIVENNAME = "givenName";
 	public static final String SN = "sn";
+	public static final String TITLE = "title";
+	public static final String O = "o";
 	public static final String ORG = "org";
+	public static final String UNIT = "unit";
+	public static final String ENTITY = "entity";
+	public static final String LOCATION = "location";
+	public static final String STREET = "street";
 	public static final String STATUS = "status";
 	public static final String TIMESTAMP = "timestamp";
 	
@@ -19,8 +25,14 @@ public class CallItem {
 	private String number;
 	private String fullname;
 	private String sn;
+	private String title;
+	private String location;
+	private String street;
 	private String givenName;
+	private String o;
 	private String org;
+	private String unit;
+	private String entity;
 	private int status;
 	private int timestamp;
 	
@@ -65,8 +77,14 @@ public class CallItem {
 		Bundle bundle = new Bundle();
 		bundle.putInt(CallItem.ID, this.id);
 		bundle.putCharSequence(CallItem.FULLNAME, this.fullname);
+		bundle.putCharSequence(CallItem.TITLE, this.title);
 		bundle.putCharSequence(CallItem.NUMBER, this.number);
+		bundle.putCharSequence(CallItem.LOCATION, this.location);
+		bundle.putCharSequence(CallItem.STREET, this.street);
+		bundle.putCharSequence(CallItem.O, this.o);
 		bundle.putCharSequence(CallItem.ORG, this.org);
+		bundle.putCharSequence(CallItem.UNIT, this.unit);
+		bundle.putCharSequence(CallItem.ENTITY, this.entity);
 		bundle.putInt(CallItem.TIMESTAMP, this.timestamp);
 		return bundle;
 	}
@@ -84,5 +102,41 @@ public class CallItem {
 	}
 	public int getStatus() {
 		return status;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setStreet(String street) {
+		this.street = street;
+	}
+	public String getStreet() {
+		return street;
+	}
+	public void setO(String o) {
+		this.o = o;
+	}
+	public String getO() {
+		return o;
+	}
+	public void setEntity(String entity) {
+		this.entity = entity;
+	}
+	public String getEntity() {
+		return entity;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+	public String getUnit() {
+		return unit;
 	}
 }

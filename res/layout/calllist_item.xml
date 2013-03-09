@@ -25,7 +25,7 @@
   			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="?android:attr/textAppearanceSmall"
-			android:textColor="@color/calllist_item_date"
+			android:textColor="@color/calllist_item_org"
 			android:lines="1" 
 			android:scrollHorizontally="true"
 			android:ellipsize="end" 
@@ -33,7 +33,7 @@
         	android:layout_below="@id/calllist_name">
 		</TextView>
 		<TextView 
-  			android:id="@+id/calllist_date" 
+  			android:id="@+id/calllist_number" 
   			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textAppearance="?android:attr/textAppearanceSmall"

@@ -37,7 +37,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
-import android.provider.Contacts;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.CommonDataKinds.StructuredName;
@@ -47,6 +46,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -132,6 +132,23 @@ public class JulhaActivity extends ListActivity {
 
         listView.setOnItemClickListener(oicl);
         registerForContextMenu(getListView());
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.menu_search:
+        	onSearchRequested();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -374,7 +391,7 @@ public class JulhaActivity extends ListActivity {
     			convertView = mInflater.inflate(R.layout.calllist_item, null);
     			holder = new ViewHolder();
     			holder.name = (TextView) convertView.findViewById(R.id.calllist_name);
-    			holder.date = (TextView) convertView.findViewById(R.id.calllist_date);
+    			holder.date = (TextView) convertView.findViewById(R.id.calllist_number);
     			holder.org = (TextView) convertView.findViewById(R.id.calllist_org);
     			
     			convertView.setTag(holder);
@@ -389,7 +406,7 @@ public class JulhaActivity extends ListActivity {
     		
     		Calendar cal = Calendar.getInstance();
     		cal.setTimeInMillis(((long) callList.get(position).getTimestamp()) * 1000);
-    		String date = DateFormat.format("dd MMMM h:mmaa",cal).toString();
+    		String date = DateFormat.format("k.mm, dd MMMM",cal).toString();
     		holder.date.setText(date);
     		
     		return convertView;

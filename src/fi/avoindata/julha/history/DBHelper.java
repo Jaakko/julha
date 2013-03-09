@@ -12,9 +12,12 @@ public final class DBHelper extends SQLiteOpenHelper {
   public static final String ID_COL = "id";
   public static final String FULLNAME_COL = "fullname";
   public static final String NUMBER_COL = "number";
+  public static final String FIXED_NUMBER_COL = "fixed_number";
   public static final String GIVENNAME_COL = "givenname";
   public static final String SN_COL = "sn";
   public static final String ORG_COL = "org";
+  public static final String LOCATION_COL = "location";
+  public static final String CITY_COL = "city";
   public static final String STATUS_COL = "status";
   public static final String TIMESTAMP_COL = "timestamp";
 
@@ -32,6 +35,9 @@ public final class DBHelper extends SQLiteOpenHelper {
             SN_COL + " TEXT, " +
             ORG_COL + " TEXT, " +
             NUMBER_COL + " TEXT, " +
+            FIXED_NUMBER_COL + " TEXT, " +
+            LOCATION_COL + " TEXT, " +
+            CITY_COL + " TEXT, " +
             STATUS_COL + " INTEGER, " +
             TIMESTAMP_COL + " INTEGER" +
             ");");

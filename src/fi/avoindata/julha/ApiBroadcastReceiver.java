@@ -26,6 +26,12 @@ import android.os.Message;
 import android.provider.ContactsContract.PhoneLookup;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class ApiBroadcastReceiver extends BroadcastReceiver {
@@ -98,10 +104,26 @@ public class ApiBroadcastReceiver extends BroadcastReceiver {
 		      String number = json.getString("number");
 		      String givenName = json.getString("givenName");
 		      String sn = json.getString("sn");
+		      
+		      LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE ); 
+		      View layout = inflater.inflate(R.layout.incomingcall_toast,null);
 
+		      ImageView image = (ImageView) layout.findViewById(R.id.image);
+		      image.setImageResource(R.drawable.launcher_icon);
+
+		      TextView text = (TextView) layout.findViewById(R.id.text);
+		      if (name.equals(""))text.setText(R.string.toast_no_callinfo);
+              else text.setText(name + " " + context.getResources().getString(R.string.toast_callinfo) + "\n" + org);
+		      
+		      Toast toast = new Toast(context);
+		      toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+		      toast.setDuration(Toast.LENGTH_LONG);
+		      toast.setView(layout);
+		      toast.show();
+		      /*
 		      if (name.equals(""))Toast.makeText(context,R.string.toast_no_callinfo, Toast.LENGTH_LONG).show();
               else Toast.makeText(context, name + " " + context.getResources().getString(R.string.toast_callinfo) + "\n" + org, Toast.LENGTH_LONG).show();
-		      
+		      */
         	  CallItem callItem = new CallItem();
         	  callItem.setFullname(name);
         	  callItem.setGivenName(givenName);

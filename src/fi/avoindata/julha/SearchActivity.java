@@ -24,6 +24,7 @@ import fi.avoindata.julha.history.CallHistoryManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.ContentProviderOperation;
 import android.content.ContentProviderResult;
@@ -47,6 +48,7 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,6 +88,7 @@ public class SearchActivity extends ListActivity {
 	      }
 	    }
 	  };
+	private ProgressDialog dialog;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -131,6 +134,23 @@ public class SearchActivity extends ListActivity {
 
         listView.setOnItemClickListener(oicl);
         registerForContextMenu(getListView());
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.menu_search:
+        	onSearchRequested();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
@@ -231,6 +251,7 @@ public class SearchActivity extends ListActivity {
     private void doMySearch(String query) {
 		// TODO Auto-generated method stub
     	Log.i(TAG, "Doing search: " + query);
+    	dialog = ProgressDialog.show(this, "", getText(R.string.dialog_searching), true);
     	startNetworkGet(query);
 	}
     
@@ -244,11 +265,6 @@ public class SearchActivity extends ListActivity {
 	@Override
     protected void onResume() {
         super.onResume();
-        // The activity has become visible (it is now "resumed").
-        callList = CallHistoryManager.getCallItems(this);
-        cla = new CallListAdapter(this, callList);
-    	listView.setAdapter(cla);
-    	cla.notifyDataSetChanged();
     }
     private void handleGetResult(JSONObject json) {
 		try {
@@ -258,7 +274,12 @@ public class SearchActivity extends ListActivity {
 					CallItem ci = new CallItem();
 					JSONObject j = ar.getJSONObject(i);
 					ci.setFullname(j.getString("name"));
+					ci.setLocation(j.getString("location"));
+					ci.setStreet(j.getString("street"));
+					ci.setUnit(j.getString("unit"));
+					ci.setEntity(j.getString("entity"));
 					ci.setOrg(j.getString("org"));
+					ci.setTitle(j.getString("title"));
 					ci.setNumber(j.getString("number"));
 					items.add(ci);
 					Log.i(TAG, "name: " + j.getString("name"));
@@ -279,9 +300,14 @@ public class SearchActivity extends ListActivity {
     	Log.i(TAG, "Spam: " + fullname);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
     	dialogText = getResources().getString(R.string.dialog_call)
+    	+ "\n" + ci.getString(CallItem.NUMBER)
     	+ "\n\n" + fullname
-    	+ "\n" + ci.getString(CallItem.ORG)				
-    	+ "\n" + ci.getString(CallItem.NUMBER);
+    	+ "\n" + ci.getString(CallItem.TITLE)
+    	+ "\n" + ci.getString(CallItem.ORG)
+    	+ "\n" + ci.getString(CallItem.UNIT);	
+    	
+    	if (!ci.getString(CallItem.LOCATION).equals("")) dialogText += "\n" + ci.getString(CallItem.LOCATION);
+    	if (!ci.getString(CallItem.STREET).equals("")) dialogText += "\n" + ci.getString(CallItem.STREET);
 
     	builder.setMessage(dialogText)
                .setCancelable(false)
@@ -304,6 +330,7 @@ public class SearchActivity extends ListActivity {
     
     private void resetForNewQuery() {
 		    networkThread = null;
+		    dialog.cancel();
 	}
 
 
@@ -396,7 +423,7 @@ public class SearchActivity extends ListActivity {
     			convertView = mInflater.inflate(R.layout.calllist_item, null);
     			holder = new ViewHolder();
     			holder.name = (TextView) convertView.findViewById(R.id.calllist_name);
-    			holder.number = (TextView) convertView.findViewById(R.id.calllist_date);
+    			holder.number = (TextView) convertView.findViewById(R.id.calllist_number);
     			holder.org = (TextView) convertView.findViewById(R.id.calllist_org);
     			
     			convertView.setTag(holder);

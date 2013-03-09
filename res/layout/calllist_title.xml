@@ -11,7 +11,7 @@
 		android:layout_height="wrap_content"
 		android:textSize="17dip"
 		android:padding="1dip"
-        android:textColor="#ffffff"
+        android:textColor="@color/calllist_title_text"
         android:textStyle="bold"
 		android:text="@string/app_name"
 		android:layout_alignParentLeft="true"

@@ -3,13 +3,14 @@
   <color name="contents_text">#ff000000</color>
   <color name="calllist_background">#ffffffff</color>
   <color name="calllist_default">#ffffffff</color>
-  <color name="calllist_pressed">#80CC6633</color>
-  <color name="calllist_focused">#80CC6633</color>
+  <color name="calllist_pressed">#80808080</color>
+  <color name="calllist_focused">#80808080</color>
   <color name="calllist_text">#ffffffff</color>
   <color name="calllist_title_bg">#CC6633</color>
   <color name="calllist_title_text">#ffffffff</color>
   <color name="calllist_title_button_highlight">#CC6633</color>
   <color name="calllist_item_title">#000000</color>
-  <color name="calllist_item_text">#808080</color>
+  <color name="calllist_item_text">#000000</color>
+  <color name="calllist_item_org">#808080</color>
   <color name="calllist_item_date">#808080</color>
 </resources>

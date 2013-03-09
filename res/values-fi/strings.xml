@@ -5,14 +5,17 @@
     <string name="search_hint">Hae nimellä, numerolla tai organisaatiolla</string>
     <string name="text_no_callitems">Ei puhelutietoja vielä!</string>
     <string name="toast_no_callinfo">Tuntematon soittaja</string>
-    <string name="toast_callinfo">soittaa.</string>
+    <string name="toast_callinfo">soittaa</string>
     <string name="dialog_spam_text">Haluatko raportoida puhelinmyyjästä?</string>
+    <string name="dialog_call">Haluatko soittaa numeroon?</string>
     <string name="dialog_store_contact_text">Haluatko tallentaa numeron yhteystietoihin?</string>
     <string name="dialog_yes">Kyllä</string>
     <string name="dialog_no">Ei</string>
+    <string name="dialog_searching">Haetaan yhteystietoja ...</string>
     <string name="menu_store_contact">Tallenna yhteystieto</string>
    	<string name="menu_share_contact">Jaa yhteystieto</string>
 	<string name="menu_store_delete">Poista yhteystieto</string>
+	<string name="menu_search">Haku</string>
 	<string name="menu_help">Ohjeet</string>
 	<string name="share_contact">Yhteystieto</string>
 </resources>
